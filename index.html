@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meza — Curated Tech &amp; Everyday Goods</title>
+<meta name="description" content="Meza is a curated store for modern tech and everyday goods — headphones, smartwatches, sneakers and more, picked for quality and design." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%235b3cc4'/%3E%3Ctext x='50' y='68' font-family='Arial' font-size='52' font-weight='900' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site-header">
+  <div class="container nav">
+    <a href="#top" class="brand" aria-label="Meza home">
+      <span class="brand-mark">M</span>
+      <span class="brand-name">Meza</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#shop">Shop</a>
+      <a href="#categories">Categories</a>
+      <a href="#featured">Featured</a>
+      <a href="#about">About</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchToggle" aria-label="Open search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      </button>
+      <button class="icon-btn cart" id="cartButton" aria-label="Cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+</header>
+
+<div class="search-panel" id="searchPanel" aria-hidden="true">
+  <div class="container search-inner">
+    <label for="productSearch">Search the collection</label>
+    <div class="search-input-wrap"><input id="productSearch" type="search" placeholder="Try headphones, sneakers, or watches" autocomplete="off"><button id="closeSearch" aria-label="Close search">×</button></div>
+  </div>
+</div>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">New season · New arrivals</span>
+        <h1>Tech that feels <em>worth it.</em></h1>
+        <p class="lead">Meza curates the products we'd actually buy — modern audio, smart wearables and everyday carry, tested for quality and priced honestly.</p>
+        <div class="hero-actions">
+          <a href="#shop" class="btn btn-primary">Shop the collection</a>
+          <a href="#featured" class="btn btn-ghost">See featured</a>
+        </div>
+        <div class="hero-meta">
+          <div class="stars" aria-hidden="true">★★★★★</div>
+          <span><b>4.9/5</b> from 12,000+ customers</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <figure class="hero-img">
+          <img src="assets/images/headphones-aura.jpg" alt="Meza Aura wireless headphones" />
+        </figure>
+        <span class="float-chip chip-1">◆ Free shipping over $50</span>
+        <span class="float-chip chip-2">★ 30-day returns</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORY TICKER ============ -->
+  <section class="category-ticker" aria-label="Shop by category">
+    <div class="container ticker-row">
+      <a href="#categories" class="ticker-item">
+        <span class="t-ico">🎧</span><span>Audio</span>
+      </a>
+      <a href="#categories" class="ticker-item">
+        <span class="t-ico">⌚</span><span>Wearables</span>
+      </a>
+      <a href="#categories" class="ticker-item">
+        <span class="t-ico">👟</span><span>Footwear</span>
+      </a>
+      <a href="#categories" class="ticker-item">
+        <span class="t-ico">📦</span><span>Everyday</span>
+      </a>
+      <a href="#categories" class="ticker-item">
+        <span class="t-ico">🔋</span><span>Chargers</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORIES ============ -->
+  <section class="section" id="categories">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Browse</span>
+        <h2>Shop by category</h2>
+        <p>Everything is tested, vetted and backed by our quality promise.</p>
+      </div>
+
+      <div class="category-grid">
+        <a href="#shop" class="category-card cat-audio">
+          <div class="cat-glyph">🎧</div>
+          <h3>Audio</h3>
+          <p>Headphones, earbuds &amp; speakers</p>
+          <span class="cat-link">Shop now →</span>
+        </a>
+        <a href="#shop" class="category-card cat-wear">
+          <div class="cat-glyph">⌚</div>
+          <h3>Wearables</h3>
+          <p>Smartwatches &amp; fitness trackers</p>
+          <span class="cat-link">Shop now →</span>
+        </a>
+        <a href="#shop" class="category-card cat-shoe">
+          <div class="cat-glyph">👟</div>
+          <h3>Footwear</h3>
+          <p>Everyday sneakers &amp; streetwear</p>
+          <span class="cat-link">Shop now →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHOP GRID ============ -->
+  <section class="section section-tinted" id="shop">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">The collection</span>
+        <h2>Featured products</h2>
+        <p>Hand-picked gear we stand behind.</p>
+      </div>
+
+      <div class="shop-toolbar" aria-label="Product filters">
+        <div class="filter-pills">
+          <button class="filter-pill active" type="button" data-category="all">All</button>
+          <button class="filter-pill" type="button" data-category="audio">Audio</button>
+          <button class="filter-pill" type="button" data-category="wearables">Wearables</button>
+          <button class="filter-pill" type="button" data-category="footwear">Footwear</button>
+        </div>
+        <span class="results-label" id="resultsLabel">8 products</span>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <!-- Product 1 -->
+        <article class="product-card" data-category="audio">
+          <div class="product-media">
+            <img src="assets/images/headphones-aura.jpg" alt="Meza Aura wireless headphones" loading="lazy" />
+            <span class="badge hot">Best seller</span>
+            <button class="quick-add" aria-label="Add Aura headphones to cart">Add</button>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Audio</span>
+            <h3>Meza Aura Headphones</h3>
+            <div class="product-meta">
+              <span class="stars" aria-label="Rated 5 out of 5">★★★★★</span>
+              <span class="price">$249</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 2 -->
+        <article class="product-card" data-category="audio">
+          <div class="product-media">
+            <img src="assets/images/headphones-nimbus.jpg" alt="Meza Nimbus headphones" loading="lazy" />
+            <span class="badge new">New</span>
+            <button class="quick-add" aria-label="Add Nimbus headphones to cart">Add</button>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Audio</span>
+            <h3>Meza Nimbus Headphones</h3>
+            <div class="product-meta">
+              <span class="stars" aria-label="Rated 5 out of 5">★★★★★</span>
+              <span class="price">$199</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 3 -->
+        <article class="product-card" data-category="wearables">
+          <div class="product-media">
+            <img src="assets/images/smartwatch-pulse.jpg" alt="Meza Pulse smartwatch" loading="lazy" />
+            <span class="badge hot">Best seller</span>
+            <button class="quick-add" aria-label="Add Pulse smartwatch to cart">Add</button>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Wearables</span>
+            <h3>Meza Pulse Smartwatch</h3>
+            <div class="product-meta">
+              <span class="stars" aria-label="Rated 5 out of 5">★★★★★</span>
+              <span class="price">$329</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 4 -->
+        <article class="product-card" data-category="wearables">
+          <div class="product-media">
+            <img src="assets/images/smartwatch-tempo.jpg" alt="Meza Tempo smartwatch" loading="lazy" />
+            <button class="quick-add" aria-label="Add Tempo smartwatch to cart">Add</button>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Wearables</span>
+            <h3>Meza Tempo Smartwatch</h3>
+            <div class="product-meta">
+              <span class="stars" aria-label="Rated 4.5 out of 5">★★★★<span class="half">★</span></span>
+              <span class="price">$279</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 5 -->
+        <article class="product-card" data-category="footwear">
+          <div class="product-media">
+            <img src="assets/images/sneaker-court.jpg" alt="Meza Court sneakers" loading="lazy" />
+            <span class="badge new">New</span>
+            <button class="quick-add" aria-label="Add Court sneakers to cart">Add</button>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Footwear</span>
+            <h3>Meza Court Sneakers</h3>
+            <div class="product-meta">
+              <span class="stars" aria-label="Rated 5 out of 5">★★★★★</span>
+              <span class="price">$129</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 6 -->
+        <article class="product-card" data-category="footwear">
+          <div class="product-media">
+            <img src="assets/images/sneaker-cloud.jpg" alt="Meza Cloud sneakers" loading="lazy" />
+            <button class="quick-add" aria-label="Add Cloud sneakers to cart">Add</button>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Footwear</span>
+            <h3>Meza Cloud Sneakers</h3>
+            <div class="product-meta">
+              <span class="stars" aria-label="Rated 4.5 out of 5">★★★★<span class="half">★</span></span>
+              <span class="price">$109</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 7 -->
+        <article class="product-card" data-category="audio">
+          <div class="product-media">
+            <img src="assets/images/earbuds-echo.webp" alt="Meza Echo wireless earbuds" loading="lazy" />
+            <span class="badge hot">Best seller</span>
+            <button class="quick-add" aria-label="Add Echo earbuds to cart">Add</button>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Audio</span>
+            <h3>Meza Echo Earbuds</h3>
+            <div class="product-meta">
+              <span class="stars" aria-label="Rated 5 out of 5">★★★★★</span>
+              <span class="price">$149</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Product 8 -->
+        <article class="product-card" data-category="audio">
+          <div class="product-media">
+            <img src="assets/images/speaker-roam.jpg" alt="Meza Roam speaker" loading="lazy" />
+            <button class="quick-add" aria-label="Add Roam speaker to cart">Add</button>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">Audio</span>
+            <h3>Meza Roam Speaker</h3>
+            <div class="product-meta">
+              <span class="stars" aria-label="Rated 5 out of 5">★★★★★</span>
+              <span class="price">$199</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED / VALUE PROPS ============ -->
+  <section class="section" id="featured">
+    <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">Why Meza</span>
+        <h2>Made to be easy to trust</h2>
+      </div>
+
+      <div class="value-grid">
+        <div class="value-card">
+          <div class="value-glyph">✓</div>
+          <h3>Quality checked</h3>
+          <p>Every product is tested against real use before it ever makes the store.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-glyph">↩</div>
+          <h3>30-day returns</h3>
+          <p>Changed your mind? Send it back, no questions asked.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-glyph">🚚</div>
+          <h3>Fast, free shipping</h3>
+          <p>Free standard delivery on all orders over $50, worldwide.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-glyph">🛡</div>
+          <h3>2-year warranty</h3>
+          <p>We stand behind our gear long after the unboxing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta">
+    <div class="container">
+      <div class="cta-card">
+        <h2>Join the Meza community</h2>
+        <p>Get early access to drops, exclusive offers and 10% off your first order.</p>
+        <form class="subscribe" onsubmit="return false">
+          <input type="email" placeholder="you@email.com" aria-label="Email address" required />
+          <button type="submit" class="btn btn-white">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand">
+          <span class="brand-mark">M</span>
+          <span class="brand-name">Meza</span>
+        </a>
+        <p>Curated tech and everyday goods, thoughtfully picked and honestly priced.</p>
+        <div class="socials">
+          <a href="https://github.com/Meentv" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 2a10 10 0 00-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.61.07-.61 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.5 9.5 0 015 0c1.9-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0012 2z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/alameen-ahmed-53b402429" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M4.98 3.5A2.5 2.5 0 002.5 6a2.5 2.5 0 005 0 2.5 2.5 0 00-2.52-2.5zM3 8.5h4V21H3zM9.5 8.5h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4 0 4.88 2.6 4.88 6v6.85h-4v-6.1c0-1.46-.03-3.35-2-3.35-2 0-2.3 1.57-2.3 3.2V21h-4z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#shop">Audio</a></li>
+          <li><a href="#shop">Wearables</a></li>
+          <li><a href="#shop">Footwear</a></li>
+          <li><a href="#shop">Everyday</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Shipping</a></li>
+          <li><a href="#">Returns</a></li>
+          <li><a href="#">Warranty</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Meza. All rights reserved.</span>
+      <span>Made with care.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="script.js" defer></script>
+</body>
+</html>
