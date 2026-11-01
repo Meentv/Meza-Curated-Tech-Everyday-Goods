@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout (demo) — Meza</title>
+  <meta name="description" content="Demo checkout on Meza — a fictional storefront. No payment is collected.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%232B44D8'/%3E%3Ctext x='16' y='22.5' font-family='Arial,sans-serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="checkout">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div data-mount="navbar"></div>
+
+  <main id="main">
+    <div class="container">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span class="crumbs__sep" aria-hidden="true"><svg class="icon"><use href="assets/icons/icons.svg#i-chevron-right"></use></svg></span>
+        <a href="shop.html">Shop</a>
+        <span class="crumbs__sep" aria-hidden="true"><svg class="icon"><use href="assets/icons/icons.svg#i-chevron-right"></use></svg></span>
+        <a href="cart.html">Cart</a>
+        <span class="crumbs__sep" aria-hidden="true"><svg class="icon"><use href="assets/icons/icons.svg#i-chevron-right"></use></svg></span>
+        <span aria-current="page">Checkout</span>
+      </nav>
+
+      <div class="page-head">
+        <h1>Checkout</h1>
+        <p class="muted">Demo checkout — nothing you enter leaves this browser.</p>
+      </div>
+
+      <!-- Prominent demo notice -->
+      <div class="demo-note" role="note">
+        <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-shield"></use></svg>
+        <p><strong>Demo checkout.</strong> Meza is a fictional storefront: this form is validated
+        locally, <strong>No payment details are collected</strong> (there are no payment fields),
+        and the "order" is stored only in this browser's localStorage. Nothing is transmitted.</p>
+      </div>
+
+      <div class="checkout-layout" data-checkout-layout>
+        <!-- Form -->
+        <form id="checkout-form" data-checkout-form novalidate>
+          <div class="form-errors" data-form-errors role="alert" hidden>
+            <h2>Please fix the following:</h2>
+            <ul data-form-errors-list style="display:grid; gap: var(--space-1); padding-left: var(--space-4); list-style: disc"></ul>
+          </div>
+
+          <h2 class="checkout__section">Contact</h2>
+          <div class="form-grid">
+            <div class="field">
+              <label class="field__label" for="co-name">Full name <span class="field__req" aria-hidden="true">*</span></label>
+              <input class="field__input" id="co-name" name="name" type="text" autocomplete="name" required aria-describedby="co-name-error">
+              <p class="field__error" id="co-name-error"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="co-email">Email <span class="field__req" aria-hidden="true">*</span></label>
+              <input class="field__input" id="co-email" name="email" type="email" autocomplete="email" required aria-describedby="co-email-error">
+              <p class="field__error" id="co-email-error"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="co-phone">Phone <span class="field__req" aria-hidden="true">*</span></label>
+              <input class="field__input" id="co-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+234…" required aria-describedby="co-phone-error">
+              <p class="field__error" id="co-phone-error"></p>
+            </div>
+          </div>
+
+          <h2 class="checkout__section">Shipping address</h2>
+          <div class="form-grid">
+            <div class="field field--full">
+              <label class="field__label" for="co-address">Street address <span class="field__req" aria-hidden="true">*</span></label>
+              <input class="field__input" id="co-address" name="address" type="text" autocomplete="street-address" required aria-describedby="co-address-error">
+              <p class="field__error" id="co-address-error"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="co-city">City <span class="field__req" aria-hidden="true">*</span></label>
+              <input class="field__input" id="co-city" name="city" type="text" autocomplete="address-level2" required aria-describedby="co-city-error">
+              <p class="field__error" id="co-city-error"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="co-state">State / region <span class="field__req" aria-hidden="true">*</span></label>
+              <input class="field__input" id="co-state" name="state" type="text" autocomplete="address-level1" required aria-describedby="co-state-error">
+              <p class="field__error" id="co-state-error"></p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="co-country">Country <span class="field__req" aria-hidden="true">*</span></label>
+              <select class="field__input field__select" id="co-country" name="country" autocomplete="country-name" required aria-describedby="co-country-error" data-countries>
+                <option value="" selected>Select country…</option>
+              </select>
+              <p class="field__error" id="co-country-error"></p>
+            </div>
+          </div>
+
+          <button class="btn btn--primary btn--block" type="submit" data-place-order style="margin-top: var(--space-2)">
+            Place demo order
+            <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-arrow-right"></use></svg>
+          </button>
+          <p class="field__hint" style="margin-top: var(--space-2); text-align:center">
+            Simulated checkout — no payment is processed. <a class="link-arrow" href="cart.html">Back to cart</a>
+          </p>
+        </form>
+
+        <!-- Summary -->
+        <aside class="summary" aria-label="Order summary">
+          <h2>Order summary</h2>
+          <div class="summary__items" data-summary-items></div>
+          <div class="summary__row"><span class="muted">Subtotal</span><span data-subtotal></span></div>
+          <div class="summary__row"><span class="muted">Shipping (demo)</span><span data-shipping></span></div>
+          <div class="summary__row summary__total"><span>Total</span><span data-total></span></div>
+        </aside>
+      </div>
+
+      <!-- Empty cart guard -->
+      <div class="empty" data-empty hidden>
+        <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-bag"></use></svg>
+        <h3>Nothing to check out</h3>
+        <p>Your cart is empty (or everything in it is currently unavailable).</p>
+        <a class="btn btn--primary" href="shop.html">Browse the collection</a>
+      </div>
+    </div>
+  </main>
+
+  <div data-mount="footer"></div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

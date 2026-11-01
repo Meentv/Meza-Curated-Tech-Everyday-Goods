@@ -1,0 +1,14 @@
+{
+  "name": "meza",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Meza — Curated Tech & Everyday Goods. Fictional demo storefront. Vanilla HTML/CSS/JS, no build step.",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "playwright": "^1.64.1"
+  }
+}
