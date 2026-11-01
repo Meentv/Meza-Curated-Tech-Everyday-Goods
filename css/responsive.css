@@ -1,0 +1,67 @@
+/* ==========================================================================
+   MEZA — responsive.css
+   ALL min-width overrides live here, grouped by breakpoint. Base styles in
+   styles.css / components.css / pages.css are mobile-first (~375px).
+
+   Breakpoints: 480px · 768px · 1024px · 1440px
+   Verified widths (spec): 375, 390, 768, 1024, 1440
+   ========================================================================== */
+
+/* --- ≥480px: larger phones ------------------------------------------------- */
+@media (min-width: 480px) {
+  .product-grid { gap: var(--space-4); }
+  .newsletter__form { flex-direction: row; align-items: flex-start; }
+}
+
+/* --- ≥768px: tablets — inline nav replaces the burger, grids widen --------- */
+@media (min-width: 768px) {
+  .nav__links { display: flex; gap: var(--space-4); margin-left: var(--space-3); }
+  .nav__burger { display: none; }
+  .nav__mobile { display: none !important; }   /* menu is desktop-inline now */
+
+  .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .form-grid { grid-template-columns: 1fr 1fr; }
+
+  .footer__inner { grid-template-columns: 1.5fr 1fr 1fr; gap: var(--space-8); }
+
+  /* homepage */
+  .hero { padding-block: var(--space-10); }
+  .hero__inner { grid-template-columns: 1.05fr 0.95fr; gap: var(--space-8); }
+  .hero__media { max-width: none; margin: 0; }
+  .editorial__inner { grid-template-columns: 1fr 1fr; }
+  .values { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* --- ≥1024px: shop becomes sidebar + results ------------------------------- */
+/* Tablets keep the filter panel collapsible above the results. At 768px, a
+   15rem sidebar leaves too little room for a useful product grid and caused
+   filter chips to visually collide with the cards. */
+@media (min-width: 1024px) {
+  .shop-layout { grid-template-columns: 15rem minmax(0, 1fr); }
+  .filters { position: sticky; top: calc(var(--header-h) + var(--space-4)); }
+  .filters__toggle { display: none; }
+  .filters__body { display: grid !important; padding-top: 0; min-width: 0; }
+  .filters .chip-row { flex-wrap: wrap; overflow-x: visible; }
+  .filters .price-range,
+  .filters .price-range .field { min-width: 0; }
+}
+
+/* --- ≥768px: PDP becomes two columns, cart becomes items + summary --------- */
+@media (min-width: 768px) {
+  .pdp { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-8); }
+  .cart-layout { grid-template-columns: minmax(0, 1fr) 20rem; }
+  .checkout-layout { grid-template-columns: minmax(0, 1fr) 20rem; }
+  .summary { position: sticky; top: calc(var(--header-h) + var(--space-4)); }
+  .about__grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* --- ≥1024px: laptops — 4-up product grid ----------------------------------- */
+@media (min-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* --- ≥1440px: wide desktops — roomier container ----------------------------- */
+@media (min-width: 1440px) {
+  :root { --container: 1280px; }
+}

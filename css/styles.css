@@ -1,0 +1,269 @@
+/* ==========================================================================
+   MEZA — styles.css
+   Design tokens + CSS reset + base element styles + small global utilities.
+
+   HOW THE CSS IS ORGANIZED (read this first):
+   1. styles.css      (this file)  — :root design tokens, reset, base styles.
+                                       Everything here is MOBILE-FIRST (375px+).
+   2. components.css               — reusable UI components (buttons, cards,
+                                       navbar, footer, forms, toast).
+   3. pages.css                    — page-specific sections (hero, editorial…).
+   4. responsive.css               — ALL `@media (min-width: …)` overrides live
+                                       in this one file, grouped by breakpoint.
+
+   Cascade rule: files load in the order above, so at EQUAL specificity later
+   files win. Never fight specificity — put overrides in the designated file.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS — every color, size and motion value lives here.
+      Change a value once and the whole site follows.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Color — warm ivory canvas, near-black ink, one refined electric blue */
+  --bg:            #FAF7F1;  /* page background (warm ivory)            */
+  --surface:       #FFFFFF;  /* cards, header, drawer                   */
+  --surface-sunken:#F2EEE5;  /* inset areas, product image tiles        */
+  --ink:           #171410;  /* primary text (near-black)               */
+  --ink-2:         #45413A;  /* strong secondary text                   */
+  --muted:         #6F6A5E;  /* secondary text (muted grey)             */
+  --line:          #E6E1D5;  /* light neutral borders                   */
+  --line-strong:   #D3CDBE;  /* stronger borders (inputs on focus)      */
+  --accent:        #2B44D8;  /* refined electric blue (links, CTAs)     */
+  --accent-hover:  #2236B4;
+  --accent-soft:   #E9EDFC;  /* tinted blue background                  */
+  --on-accent:     #FFFFFF;  /* text on accent buttons                  */
+  --charcoal:      #1C1B18;  /* dark sections (footer, editorial)       */
+  --charcoal-2:    #26251F;  /* raised surfaces on dark                 */
+  --on-dark:       #F4F1E9;  /* text on dark sections                   */
+  --muted-dark:    #A9A496;  /* secondary text on dark                  */
+  --danger:        #B3261E;
+  --danger-soft:   #FBEAE8;
+  --success:       #20713F;
+  --success-soft:  #E7F3EB;
+
+  /* Typography — system sans stack only, so the site works fully offline */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, sans-serif;
+
+  /* Fluid type scale (clamp = min, preferred, max) */
+  --text-xs:   0.75rem;                              /* 12px  */
+  --text-sm:   0.875rem;                             /* 14px  */
+  --text-base: 1rem;                                 /* 16px  */
+  --text-lg:   1.125rem;                             /* 18px  */
+  --text-xl:   1.25rem;                              /* 20px  */
+  --text-2xl:  clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
+  --text-3xl:  clamp(1.875rem, 1.4rem + 2.4vw, 2.75rem);
+  --text-hero: clamp(2.5rem, 1.6rem + 5vw, 4.75rem);  /* hero headline */
+
+  --leading-tight: 1.15;   /* headings */
+  --leading-body:  1.6;    /* body text */
+
+  /* Spacing scale — 4px base */
+  --space-1:  0.25rem;   /* 4px  */
+  --space-2:  0.5rem;    /* 8px  */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.5rem;    /* 24px */
+  --space-6:  2rem;      /* 32px */
+  --space-8:  3rem;      /* 48px */
+  --space-10: 4rem;      /* 64px */
+  --space-12: 6rem;      /* 96px */
+
+  /* Radii — deliberately small/subtle (premium, not bubbly) */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  /* Shadows — soft, low, layered */
+  --shadow-sm: 0 1px 2px rgba(23, 20, 16, 0.06);
+  --shadow-md: 0 4px 16px rgba(23, 20, 16, 0.08);
+  --shadow-lg: 0 12px 32px rgba(23, 20, 16, 0.14);
+
+  /* Motion — subtle and fast; globally disabled for reduced-motion users */
+  --dur-fast: 120ms;
+  --dur:      180ms;
+  --ease:     cubic-bezier(0.2, 0.6, 0.2, 1);
+
+  /* Layout */
+  --container:     1200px;                          /* max page width */
+  --container-pad: clamp(1rem, 4vw, 2rem);          /* side gutters  */
+  --header-h:      4rem;                            /* 64px navbar   */
+
+  /* Z-index scale */
+  --z-header: 50;
+  --z-drawer: 80;
+  --z-toast:  90;
+
+  /* Breakpoints are documented here and USED in responsive.css:
+     --bp-sm: 480px · --bp-md: 768px · --bp-lg: 1024px · --bp-xl: 1440px */
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET — normalize browser defaults so we start from a known state
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;   /* stop iOS auto-inflating text */
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-body);
+  color: var(--ink);
+  background: var(--bg);
+  min-height: 100vh;
+  /* the page shell: header / main / footer stack vertically */
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }   /* pushes the footer to the bottom on short pages */
+
+h1, h2, h3, h4, h5, h6, p, ul, ol, figure, blockquote { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+
+/* The hidden attribute must always win, even over display:grid/flex rules */
+[hidden] { display: none !important; }
+
+img, svg, video, canvas { display: block; max-width: 100%; }
+
+/* Links inherit color; interactive affordance comes from components */
+a { color: inherit; text-decoration: none; }
+
+/* Buttons: reset to bare, styled in components.css */
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Form controls inherit the site font (set per-component otherwise) */
+input, select, textarea { font: inherit; color: inherit; }
+
+::selection { background: var(--accent); color: var(--on-accent); }
+
+/* Keyboard users always get a clear focus ring */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. BASE TYPOGRAPHY
+   -------------------------------------------------------------------------- */
+h1, h2, h3, h4 {
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;      /* tight, confident display headings */
+  font-weight: 700;
+}
+/* Page-level h1 is large but not hero-sized; the homepage hero overrides this */
+h1 { font-size: var(--text-3xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+/* Long words (e.g. product names) must never push past their container */
+h1, h2, h3, h4 { overflow-wrap: break-word; }
+
+p { max-width: 65ch; }           /* comfortable reading measure */
+
+/* --------------------------------------------------------------------------
+   4. GLOBAL UTILITIES (small helpers used across pages)
+   -------------------------------------------------------------------------- */
+
+/* Centered page column with gutters */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* Vertical rhythm for page sections */
+.section { padding-block: var(--space-8); }
+.section--tight { padding-block: var(--space-6); }
+
+/* Section heading row: title on the left, optional link/action on the right */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+.section-head p { color: var(--muted); }
+
+/* Muted / accent text helpers */
+.muted  { color: var(--muted); }
+.accent { color: var(--accent); }
+
+/* Dark band sections (editorial / "why Meza" / footer areas) */
+.band-dark {
+  background: var(--charcoal);
+  color: var(--on-dark);
+}
+.band-dark .muted, .band-dark p { color: var(--muted-dark); }
+
+/* Visually hidden but still available to screen readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Skip link: first Tab stop jumps past the navbar to main content */
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: var(--z-toast);
+  padding: var(--space-2) var(--space-4);
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: var(--radius-md);
+  transform: translateY(-200%);       /* hidden until focused */
+  transition: transform var(--dur) var(--ease);
+}
+.skip-link:focus-visible { transform: translateY(0); }
+
+/* --------------------------------------------------------------------------
+   5. ICON SYSTEM — one external SVG sprite, colored via currentColor.
+      Usage:  <svg class="icon" aria-hidden="true"><use href="assets/icons/icons.svg#i-bag"/></svg>
+      The shapes inside the sprite carry no fill/stroke attributes, so these
+      inherited properties style them from the outside. Add .icon--fill to
+      fill a shape (e.g. an active wishlist heart).
+   -------------------------------------------------------------------------- */
+.icon {
+  width: 1.25em;
+  height: 1.25em;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex: none;               /* icons never squash inside flex rows */
+}
+.icon--fill { fill: currentColor; }
