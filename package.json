@@ -1,14 +1,22 @@
 {
   "name": "meza",
-  "version": "1.0.0",
   "private": true,
+  "version": "2.0.0",
   "type": "module",
-  "description": "Meza — Curated Tech & Everyday Goods. Fictional demo storefront. Vanilla HTML/CSS/JS, no build step.",
+  "description": "Meza — Curated Tech & Everyday Goods. Fictional demo storefront, rebuilt in React + Vite.",
   "scripts": {
-    "start": "python3 -m http.server 8000",
-    "test": "node --test"
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "start": "vite --host 0.0.0.0"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
   },
   "devDependencies": {
-    "playwright": "^1.64.1"
+    "@vitejs/plugin-react": "^6.2.1",
+    "vite": "^8.3.6"
   }
 }
