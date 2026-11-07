@@ -41,8 +41,9 @@ export default function About() {
             no order is ever transmitted.
           </p>
           <p>
-            This site is built with vanilla HTML, CSS and JavaScript ES modules — no
-            frameworks, no build step — so the code stays readable and maintainable.
+            This site is built with React and React Router, bundled with Vite. Product
+            data lives in one file, the design system stays in plain CSS, and each page
+            is a small component — so the code stays readable and maintainable.
           </p>
           <p style={{ marginTop: 'var(--space-5)' }}>
             <Link className="btn btn--primary" to="/shop">

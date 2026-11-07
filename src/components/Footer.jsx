@@ -19,7 +19,7 @@ export default function Footer() {
           </Link>
           <p className="footer__tag">
             Curated tech &amp; everyday goods. A fictional demo storefront built to demonstrate a
-            complete vanilla-JS shopping experience — no real orders are ever placed.
+            complete React shopping experience — no real orders are ever placed.
           </p>
           <p className="footer__demo">
             <Icon name="shield" /> Demo checkout: no payment is collected.
@@ -51,7 +51,7 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="container footer__bottom-inner">
           <span>© {year} Meza — fictional demo store</span>
-          <span>Built with vanilla HTML, CSS &amp; JavaScript ES modules</span>
+          <span>Built with React, React Router &amp; Vite</span>
         </div>
       </div>
     </footer>

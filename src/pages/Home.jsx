@@ -85,7 +85,7 @@ function Newsletter() {
 export default function Home() {
   usePageMeta(
     'Meza — Curated Tech & Everyday Goods',
-    'Meza is a fictional demo storefront for thoughtfully selected technology and everyday essentials. Vanilla HTML/CSS/JS portfolio project.',
+    'Meza is a fictional demo storefront for thoughtfully selected technology and everyday essentials. React + Vite portfolio project.',
   );
 
   const featured = PRODUCTS.filter((p) => p.featured).slice(0, 8);
